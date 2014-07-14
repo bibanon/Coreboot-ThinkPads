@@ -1,0 +1,1 @@
+Inspecting the BIOS chip is significantly easier on the T60, just remove the palmrest and keyboard.
