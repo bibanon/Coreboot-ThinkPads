@@ -20,14 +20,12 @@ Change the corresponding values under `flashchips.c` for your chip model:
   * `.probe` - `probe_spi_res1`
   * `.model_id` - `0xbf`
   * `.write` - `spi_chip_write_1`
-* `MX25l1605D` - Actual family name in `flashchips.c` is `MX25l1605`
+* `MX25l1605D`
   * `.probe` - `probe_spi_res1`
   * `.model_id` - `0x14`
   * `.write` - `spi_chip_write_1`
 
 For an example of the changes made, check the `flashchips.c.patch` files.
-
-> **Note:** At the time of this writing, I actually had to edit ".name = "MX25L1605" instead of ".name = "MX25l1605D" because 605D falls under the 605 family, so 605D does not exist as a stand alone ruleset. However, this may change in future flashrom versions.
 
 ### Sources
 
@@ -74,7 +72,7 @@ To the best of our knowledge, there is no reason why this method should not work
 
 2. If a `factory.bin` file *was created*, your chip may be an autodetected `Atmel` chip, common in T60 systems. No patching is required for this chip, so now you can flash Coreboot safely. If it was *not created*, try the other check methods.
 
-3. (optional, for research purposes) If your output contains the lines below, it is an Atmel `0711 26DF161 SU`. If your output does not match, you may still continue; just report it for the benefit of all.
+3. (optional, for research purposes) If your output contains the lines below, it is an Atmel `0711 26DF161 SU`. If your output does not match, visually identify your BIOS chip before proceeding so that we can add it to our list.
 
     (grab it from a T60 planar)
 
@@ -102,9 +100,7 @@ To the best of our knowledge, there is no reason why this method should not work
     Found Macronix flash chip "MX25L1605D/MX25L1608D/MX25L1673E" (2048 kB, SPI) at physical address 0xffe00000.
     Reading flash... done.
 
-4. If a `factory.bin` file was *not created*, and your output does not match any of the above, report your output. It may be a new, undocumented type of BIOS chip (common in T60 and R60 models), and it would help the developers to find a way to flash and identify them.
-
-3. If your output does not contain the lines above, your flash chip probably isn't a `MX25l1605D`. Grab a new copy of `flashrom` source code and start over. If you still end up here, report the output.
+4. If a `factory.bin` file was *not created*, and your output does not match any of the above, report your output, you will have to visually identify your BIOS chip. It may be a new, undocumented type of BIOS chip (common in T60 and R60 models), and it would help the developers to find a way to flash and identify them.
 
 ### Method 2 - Verbose Search
 
