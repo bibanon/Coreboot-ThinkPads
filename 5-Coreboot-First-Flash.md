@@ -2,19 +2,21 @@
 
 ## Flash Coreboot for the First Time
 
+> **Warning:** Make sure that you use the latest `coreboot.rom` file from the latest binary releases on the official Libreboot website! It is too risky to use your own builds on the first flash! (Coreboot might fail to work, etc.)
+
 1. Run the `bucts` command to make the first 64K of the BIOS bootable.
 
 > **Warning:** This step is extremely important, because the remaining read-only 64K acts as a safety net in case Coreboot is flashed incorrectly.
 
     sudo ./bucts 1
 
-2. Run this `flashrom` command to install Coreboot to your BIOS chip.
+2. Run this `flashrom` command to install Coreboot to your BIOS chip. Make sure to wait until it completely finishes, it can take a few minutes.
 
     sudo ./flashrom -p internal -w coreboot.rom
 
 > **Note:** This flash will take a while, and will output errors for addresses 0x0 and 0x1f0000 if working with a 2 Mbyte flash chip.
 
-3. At the end, flashrom may output `FAILED!` (since the last 64K is write protected). No need to panic; errors are normal. However, the error output **must match** the text shown below:
+3. At the end, flashrom will probably output `FAILED!` (since the last 64K is write protected). No need to panic; errors are normal. However, the error output **must match** the text shown below (or have very similar errors):
 
     Reading old flash chip contents... done.
     Erasing and writing flash chip... spi_block_erase_20 failed during command execution at address 0x0
@@ -25,6 +27,27 @@
     Reading current flash chip contents... done. spi_chip_erase_c7 failed during command execution
     FAILED!
     Uh oh. Erase/write failed. Checking if anything changed.
+    Your flash chip is in an unknown state.
+
+---
+
+    Reading old flash chip contents... done.
+    Erasing and writing flash chip... spi_block_erase_20 failed during command execution at address 0x0
+    Reading current flash chip contents... done. Looking for another erase function.
+    spi_block_erase_52 failed during command execution at address 0x0
+    Reading current flash chip contents... done. Looking for another erase function.
+    Transaction error!
+    spi_block_erase_d8 failed during command execution at address 0x1f0000
+    Reading current flash chip contents... done. Looking for another erase function.
+    spi_chip_erase_60 failed during command execution
+    Reading current flash chip contents... done. Looking for another erase function.
+    spi_chip_erase_c7 failed during command execution
+    Looking for another erase function.
+    No usable erase functions left.
+    FAILED!
+    Uh oh. Erase/write failed. Checking if anything has changed.
+    Reading current flash chip contents...  until done.
+    Apparently at least some data has changed.
     Your flash chip is in an unknown state.
 
 > **Note:** If you get a different set of errors, the flash has failed. DO NOT TURN OFF YOUR COMPUTER!  

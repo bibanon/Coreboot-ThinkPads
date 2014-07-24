@@ -32,9 +32,11 @@ Libreboot uses the GRUB2 payload in it's Coreboot image, but for the first flash
 
 ## Modify Coreboot ROM
 
+This step is REQUIRED if you are flashing Coreboot for the first time. Otherwise, the ROM might overwrite some portions of the BIOS protected by `bucts 1`.
+
 1. Copy the `coreboot.rom` file in `X60_source` to the `flashrom` source code folder.
 
-2. Run the `dd` command below to backup the first 64K of data from `coreboot.rom` .
+2. Run the `dd` command below to shift the first 64K of data from `coreboot.rom` .
 
     dd if=coreboot.rom of=top64k.bin bs=1 skip=$[$(stat -c %s coreboot.rom) - 0x10000] count=64k
 
