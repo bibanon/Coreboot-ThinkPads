@@ -275,6 +275,18 @@ One particularly interesting Libreboot system is an **Apple MacBook 2,1**. It go
 
 It has a very nice 13.3 inch IPS 1280x800 screen, and even a Core 2 Duo processor.
 
-Documentation is very sparse on this system, and I'm finding it difficult to know what works, what doesn't work, and how to safely flash. But the Libreboot developers are working hard on getting it running, and everything "should" work.
+Documentation is very sparse on this system, and I'm finding it difficult to know how to safely flash. But the Libreboot developers are working hard on getting it running, and everything "should" work.
+
+### The Updates that enabled MacBook 2,1
+
+These patches were made by Vladimir Serbinenko and Mono Moosbart.
+
+* [2014-03-2 - MacBook 2,1 port added, no EC or audio support](http://review.coreboot.org/#/c/5321/)
+* [2014-03-15 - Fixed EC, now lid and battery indicator works](http://review.coreboot.org/#/c/5323/)
+* [2014-05-31 - Fixed audio](http://review.coreboot.org/#/c/5324/)
+
+In general, since the hardware is very similar to the X60, most of the stuff should work. Better yet, the MacBook comes with an Atheros WiFi card by default, so no need to switch it out like on the ThinkPads.
+
+### Sources
 
 * [H-Node - Apple MacBook 2,1 Coreboot Description](http://h-node.org/notebooks/view/en/1135/MacBook2-1---Mac-F4208CAA)
