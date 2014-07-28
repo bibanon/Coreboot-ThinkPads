@@ -113,7 +113,8 @@ This BIOS image is **unique to every motherboard**. It will be impossible to res
     sudo ./flashrom_lenovobios_sst -p internal -r factory.bin
     sudo ./flashrom_lenovobios_macronix -p internal -r factory.bin
 
-3. If a `factory.bin` file was created in the `flashrom/` folder, the Lenovo BIOS has been backed up successfully. If not, try the commands again.
+3. If a `factory.bin` file was created in the `flashrom/` folder, the Lenovo BIOS has been backed up successfully. If not, try the commands again. Copy this dump to a safe place.
+
 4. Return to the `libreboot_bin/` folder.
 
     cd ..
@@ -126,7 +127,7 @@ This BIOS image is **unique to every motherboard**. It will be impossible to res
 
     $ sudo ./lenovobios_firstflash bin/YOURBOARD/YOURROM. 
 
-2. Wait for the process to finish. Expect to see "critical errors" during flashing, but don't panic.
+2. Wait for the process to finish. Expect to see "critical errors" during flashing, but don't panic; proceed to the next step to check if the flash ran correctly.
 
 3. The line below is displayed if `bucts 1` was enabled successfully.
 
@@ -153,7 +154,9 @@ This BIOS image is **unique to every motherboard**. It will be impossible to res
 
 6. Wait a few seconds, and then boot. Libreboot will start up.
 
-7. Boot into Linux using Libreboot's GRUB2. Proceed to **Libreboot Second Flash**.
+7. Use the `Search for GRUB configuration on local storage` option if the normal menu options don't work.
+
+8. After booting into Linux, proceed to **Libreboot Second Flash**.
 
 > **Note:** If you boot and you see nothing, try turning up the backlight `Fn+Home`. For ThinkPad X60 models, if the backlight resets to zero when turning it up while at max, consult Libreboot's [TFT Brightness Guide.](http://www.libreboot.org/docs/#tft_brightness)  
 
@@ -262,3 +265,16 @@ Here are the parts numbers for the Flexview screens:
 If upgrading from an XGA screen, you must also replace the inverter (just under the panel, in the lid):
 
 * The Inverter ($15) - There are mixed reports about whether the XGA inverter works or doesn't work with the Flexview panels. But for now, replace them with these known working ones:
+
+## Libreboot on Apple Macbook 2,1
+
+* **Compatible Parts Numbers:** Apple MacBook2,1 (MA699LL/A, MA701LL/A, MB061LL/A, MA700LL/A, MB063LL/A, MB062LL/A)
+  * Source: Libreboot Website
+
+One particularly interesting Libreboot system is an **Apple MacBook 2,1**. It goes for around $100-200 complete on eBay, since it has been completely abandoned by Apple.
+
+It has a very nice 13.3 inch IPS 1280x800 screen, and even a Core 2 Duo processor.
+
+Documentation is very sparse on this system, and I'm finding it difficult to know what works, what doesn't work, and how to safely flash. But the Libreboot developers are working hard on getting it running, and everything "should" work.
+
+* [H-Node - Apple MacBook 2,1 Coreboot Description](http://h-node.org/notebooks/view/en/1135/MacBook2-1---Mac-F4208CAA)
